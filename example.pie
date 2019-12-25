@@ -2,4 +2,7 @@
 #_'ratatouille
 #_(cons 'foo 'bar)
 #_(cdr (cons 'foo 'bar))
-(car (cons 'foo 'bar))
+#_(car (cons 'foo 'bar))
+zero
+(add1 zero)
+(add1 (add1 (add1 zero)))
