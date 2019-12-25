@@ -1,2 +1,5 @@
-#_'ratatouille
 'courgette
+#_'ratatouille
+(cons 'foo 'bar)
+(cdr (cons 'foo 'bar))
+(car (cons 'foo 'bar))
