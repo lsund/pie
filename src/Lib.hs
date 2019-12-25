@@ -3,7 +3,6 @@ module Lib where
 import Data.Functor.Identity
 import Text.Parsec.Prim hiding (try)
 import Text.ParserCombinators.Parsec
-import Text.Parsec.Token
 
 type PieParser u = ParsecT String u Identity
 
@@ -13,12 +12,15 @@ data Expression
   | Pair Expression Expression
   deriving (Show)
 
+notComment :: Expression -> Bool
+notComment (Comment x) = False
+notComment _ = True
+
 comment :: PieParser () Expression
 comment = do
   _ <- char '#'
   _ <- char '_'
-  x <- expression
-  return $ Comment x
+  Comment <$> expression
 
 atom :: PieParser () Expression
 atom = do
